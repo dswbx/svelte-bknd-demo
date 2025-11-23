@@ -3,7 +3,7 @@ import type { RequestHandler } from "./$types";
 import config from "../../../../bknd.config.ts";
 
 const handler: RequestHandler = async ({ request }) => {
-   const app = await createFrameworkApp(config);
+   const app = await createFrameworkApp(config, import.meta.env);
    return app.fetch(request);
 };
 
