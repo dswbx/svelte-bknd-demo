@@ -1,18 +1,23 @@
-import { createRuntimeApp, serveStaticViaImport } from "bknd/adapter";
+import { createRuntimeApp } from "bknd/adapter";
 import config from "../bknd.config";
 import type { ApiOptions } from "bknd/client";
+import type { App } from "bknd";
 
+let app: App;
 export async function getApp() {
-   return await createRuntimeApp(
-      {
-         ...config,
-         adminOptions: {
-            adminBasepath: "/admin",
-            logoReturnPath: "/../",
+   if (!app) {
+      app = await createRuntimeApp(
+         {
+            ...config,
+            adminOptions: {
+               adminBasepath: "/admin",
+               logoReturnPath: "/../",
+            },
          },
-      },
-      import.meta.env
-   );
+         import.meta.env
+      );
+   }
+   return app;
 }
 
 export async function getApi(options: ApiOptions = {}, verify = false) {
