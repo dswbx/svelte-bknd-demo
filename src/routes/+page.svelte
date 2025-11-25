@@ -1,15 +1,10 @@
 <script lang="ts">
-   import { getApi } from "../bknd";
-   let { data } = $props();
-
-	const api = await getApi({ headers: new Headers(data.headers) }, true);
-   const user = api.getUser();
-   const { data: todos } = await api.data.readMany("todos");
-   console.log(todos);
+   let props = $props();
+   let { data: { todos, user } } = props;
 </script>
 
 <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p> 
 
 <h2>Todo List</h2>
 <ul>

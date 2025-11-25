@@ -26,3 +26,4 @@ data.db
 static/assets
 static/favicon.ico
 static/manifest.json
+src/worker-configuration.d.ts

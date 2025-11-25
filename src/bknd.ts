@@ -1,12 +1,12 @@
-import { createRuntimeApp } from "bknd/adapter";
-import config from "../bknd.config";
+import { createApp } from "bknd/adapter/cloudflare";
+import config from "../config";
 import type { ApiOptions } from "bknd/client";
 import type { App } from "bknd";
 
 let app: App;
-export async function getApp() {
+export async function getApp(platform?: App.Platform) {
    if (!app) {
-      app = await createRuntimeApp(
+      app = await createApp(
          {
             ...config,
             adminOptions: {
@@ -14,7 +14,7 @@ export async function getApp() {
                logoReturnPath: "/../",
             },
          },
-         import.meta.env
+         platform
       );
    }
    return app;

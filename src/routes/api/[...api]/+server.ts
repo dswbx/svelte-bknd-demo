@@ -1,8 +1,8 @@
 import type { RequestHandler } from "./$types";
 import { getApp } from "../../../bknd.ts";
 
-const handler: RequestHandler = async ({ request }) => {
-   const app = await getApp();
+const handler: RequestHandler = async ({ request, platform }) => {
+   const app = await getApp(platform);
    return app.fetch(request);
 };
 
